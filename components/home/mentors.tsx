@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { AnimatedSection } from "@/components/ui/animated-section"
 import { Button } from "@/components/ui/button"
@@ -15,25 +14,25 @@ const mentors = [
     name: "张三",
     role: "技术导师",
     description: "前字节跳动技术专家，10年+开发经验",
-    imageUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix",
+    color: "from-red-500 to-orange-500",
   },
   {
     name: "李四",
     role: "产品导师",
     description: "连续创业者，多个爆款产品操盘手",
-    imageUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Tigger",
+    color: "from-blue-500 to-cyan-500",
   },
   {
     name: "王五",
     role: "创业导师",
     description: "资深投资人，服务过100+创业团队",
-    imageUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Molly",
+    color: "from-purple-500 to-pink-500",
   },
   {
     name: "赵六",
     role: "运营导师",
     description: "前阿里运营总监，增长黑客专家",
-    imageUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Oscar",
+    color: "from-green-500 to-yellow-500",
   },
 ]
 
@@ -65,24 +64,30 @@ export function Mentors({ showAll = false }: MentorsProps) {
               className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/10"
             >
               {/* 头像容器 */}
-              <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full border-2 border-white/20 transition-transform duration-300 group-hover:scale-105">
-                {/* 发光效果 */}
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <img
-                  src={mentor.imageUrl}
-                  alt={mentor.name}
-                  className="h-full w-full object-cover"
-                />
+              <div className="flex items-center gap-x-6">
+                {/* Notion 风格头像 */}
+                <div className={`relative h-16 w-16 rounded-xl bg-gradient-to-br ${mentor.color} flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg`}>
+                  <span className="text-2xl font-bold text-white">
+                    {mentor.name[0]}
+                  </span>
+                  {/* 发光效果 */}
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold leading-7 tracking-tight text-white">
+                    {mentor.name}
+                  </h3>
+                  <p className="text-sm font-semibold leading-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    {mentor.role}
+                  </p>
+                </div>
               </div>
+              <p className="mt-6 text-base leading-7 text-white/60">
+                {mentor.description}
+              </p>
 
-              <div className="mt-6 text-center">
-                <h3 className="text-lg font-semibold text-white">{mentor.name}</h3>
-                <p className="mt-1 text-sm text-purple-400">{mentor.role}</p>
-                <p className="mt-3 text-sm text-white/60">{mentor.description}</p>
-              </div>
-
-              {/* 悬停时显示的装饰性边框 */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-600/20 to-blue-600/20 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100" />
+              {/* 卡片发光效果 */}
+              <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-purple-600/50 to-blue-600/50 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100" />
             </div>
           ))}
         </div>
