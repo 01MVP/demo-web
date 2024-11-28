@@ -5,72 +5,79 @@ import { AnimatedSection } from "@/components/ui/animated-section"
 
 const mentors = [
   {
-    name: "张教授",
-    role: "AI 研究专家",
-    avatar: "/avatars/mentor-1.png",
-    description: "前 Google AI 研究员，在 AI 领域有超过10年经验",
-    expertise: ["机器学习", "深度学习", "NLP"],
+    name: "张三",
+    role: "技术导师",
+    description: "前字节跳动技术专家，10年+开发经验",
+    imageUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix",
   },
   {
-    name: "李老师",
-    role: "全栈开发导师",
-    avatar: "/avatars/mentor-2.png",
-    description: "资深全栈工程师，曾主导多个百万级用户产品的开发",
-    expertise: ["Web开发", "移动应用", "系统架构"],
+    name: "李四",
+    role: "产品导师",
+    description: "连续创业者，多个爆款产品操盘手",
+    imageUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Tigger",
   },
   {
-    name: "王老师",
-    role: "产品设计导师",
-    avatar: "/avatars/mentor-3.png",
-    description: "前字节跳动产品专家，擅长用户体验和产品规划",
-    expertise: ["产品设计", "用户研究", "增长黑客"],
-  },
-  {
-    name: "陈老师",
+    name: "王五",
     role: "创业导师",
-    avatar: "/avatars/mentor-4.png",
-    description: "连续创业者，多个创业项目成功退出",
-    expertise: ["商业模式", "融资规划", "团队管理"],
+    description: "资深投资人，服务过100+创业团队",
+    imageUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Molly",
+  },
+  {
+    name: "赵六",
+    role: "运营导师",
+    description: "前阿里运营总监，增长黑客专家",
+    imageUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Oscar",
   },
 ]
 
 export function Mentors() {
   return (
-    <section className="container py-24">
-      <AnimatedSection>
+    <div className="relative py-24">
+      {/* 背景效果 */}
+      <div className="absolute inset-0 bg-grid opacity-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="h-[40rem] w-[40rem] rounded-full bg-purple-600/30 blur-[128px] opacity-20" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl font-bold">专业导师团队</h2>
-          <p className="mt-4 text-muted-foreground">
-            来自一线科技公司的资深专家，助你快速成长
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            遇见你的导师
+          </h2>
+          <p className="mt-4 text-lg leading-8 text-white/60">
+            经验丰富的导师团队，助你少走弯路
           </p>
         </div>
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+
+        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {mentors.map((mentor) => (
-            <Card key={mentor.name} className="bg-muted/50">
-              <CardContent className="pt-6">
-                <div className="text-center">
-                  <Avatar className="h-24 w-24 mx-auto">
-                    <AvatarImage src={mentor.avatar} />
-                    <AvatarFallback>{mentor.name[0]}</AvatarFallback>
-                  </Avatar>
-                  <h3 className="mt-4 text-lg font-semibold">{mentor.name}</h3>
-                  <p className="text-sm text-primary">{mentor.role}</p>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {mentor.description}
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-2 justify-center">
-                    {mentor.expertise.map((skill) => (
-                      <Badge key={skill} variant="secondary">
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <div
+              key={mentor.name}
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/10"
+            >
+              {/* 头像容器 */}
+              <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full border-2 border-white/20 transition-transform duration-300 group-hover:scale-105">
+                {/* 发光效果 */}
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <img
+                  src={mentor.imageUrl}
+                  alt={mentor.name}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+
+              <div className="mt-6 text-center">
+                <h3 className="text-lg font-semibold text-white">{mentor.name}</h3>
+                <p className="mt-1 text-sm text-purple-400">{mentor.role}</p>
+                <p className="mt-3 text-sm text-white/60">{mentor.description}</p>
+              </div>
+
+              {/* 悬停时显示的装饰性边框 */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-600/20 to-blue-600/20 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100" />
+            </div>
           ))}
         </div>
-      </AnimatedSection>
-    </section>
+      </div>
+    </div>
   )
 }
