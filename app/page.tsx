@@ -7,8 +7,11 @@ import { Hero } from "@/components/home/hero"
 import { Features } from "@/components/home/features"
 import { Stats } from "@/components/home/stats"
 import { Courses } from "@/components/home/courses"
+import { Mentors } from "@/components/home/mentors"
+import { Resources } from "@/components/home/resources"
 import { Showcase } from "@/components/home/showcase"
 import { FAQ } from "@/components/home/faq"
+import { Newsletter } from "@/components/home/newsletter"
 import { ContactForm } from "@/components/home/contact-form"
 import { CTA } from "@/components/home/cta"
 import { Social } from "@/components/home/social"
@@ -26,8 +29,11 @@ export default function Home() {
       <Features />
       <Stats />
       <Courses />
+      <Mentors />
       <Showcase />
+      <Resources />
       <FAQ />
+      <Newsletter />
       <ContactForm />
       <CTA />
       <Social />
