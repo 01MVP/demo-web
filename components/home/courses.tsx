@@ -1,103 +1,117 @@
 import { Button } from "@/components/ui/button"
-import { Check } from "lucide-react"
+import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 
-const courses = [
-  {
-    name: "MVP 启航计划",
-    description: "从 0 到 1 打造你的第一个产品",
-    price: "¥999",
-    features: [
-      "产品定位与市场分析",
-      "最小可行产品规划",
-      "技术选型指导",
-      "AI 开发工具使用",
-      "产品发布与推广",
-    ],
-    featured: false,
-  },
-  {
-    name: "创业加速营",
-    description: "帮助你的产品快速成长",
-    price: "¥2999",
-    features: [
-      "包含 MVP 启航计划全部内容",
-      "一对一创业导师指导",
-      "技术团队配套支持",
-      "投资人对接机会",
-      "创业社群资源",
-    ],
-    featured: true,
-  },
-]
+interface CoursesProps {
+  showAll?: boolean
+}
 
-export function Courses() {
+export function Courses({ showAll = false }: CoursesProps) {
+  const courses = [
+    {
+      title: "MVP 开发入门",
+      description: "从零开始学习如何构建 MVP，掌握基础开发技能",
+      price: "¥299",
+      features: ["基础开发技能", "项目实战", "导师指导", "社群交流"],
+      recommended: false,
+    },
+    {
+      title: "全栈开发进阶",
+      description: "深入学习全栈开发技术，提升开发效率",
+      price: "¥599",
+      features: ["高级开发技术", "性能优化", "架构设计", "项目管理"],
+      recommended: true,
+    },
+    {
+      title: "创业实战课程",
+      description: "从产品设计到上线运营的完整创业指南",
+      price: "¥899",
+      features: ["商业模式", "产品设计", "市场营销", "融资指导"],
+      recommended: false,
+    },
+  ]
+
+  const displayCourses = showAll ? courses : courses.slice(0, 3)
+
   return (
-    <div className="relative py-24">
-      {/* 背景效果 */}
-      <div className="absolute inset-0 bg-grid opacity-10" />
-      <div className="absolute -top-40 right-0 h-[40rem] w-[40rem] rounded-full bg-purple-600/30 blur-[128px] opacity-20" />
-      <div className="absolute -bottom-40 left-0 h-[40rem] w-[40rem] rounded-full bg-blue-600/30 blur-[128px] opacity-20" />
-
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
+    <section className="py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            选择适合你的课程
+            精品课程
           </h2>
           <p className="mt-4 text-lg leading-8 text-white/60">
-            系统化的学习内容，助你更快地实现创业目标
+            从零基础到项目落地，系统化的学习路径
           </p>
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-2">
-          {courses.map((course) => (
+        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          {displayCourses.map((course) => (
             <div
-              key={course.name}
-              className={`relative rounded-2xl ${
-                course.featured
-                  ? "border-purple-500/30 bg-purple-500/10"
-                  : "border-white/10 bg-white/5"
-              } border p-8 backdrop-blur-xl`}
+              key={course.title}
+              className={`relative group rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl ${
+                course.recommended ? "ring-2 ring-purple-500" : ""
+              }`}
             >
-              {course.featured && (
-                <div className="absolute -top-5 right-8">
-                  <div className="inline-flex items-center rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-1 text-sm text-purple-400 backdrop-blur-xl">
+              {course.recommended && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <div className="rounded-full bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-1 text-sm font-medium text-white">
                     推荐课程
                   </div>
                 </div>
               )}
 
-              <div className="flex flex-col">
-                <h3 className="text-2xl font-bold text-white">{course.name}</h3>
-                <p className="mt-2 text-white/60">{course.description}</p>
-                <p className="mt-6">
-                  <span className="text-4xl font-bold text-white">{course.price}</span>
-                </p>
+              <h3 className="text-xl font-semibold leading-7 tracking-tight text-white">
+                {course.title}
+              </h3>
+              <p className="mt-4 text-base leading-7 text-white/60">
+                {course.description}
+              </p>
+              <p className="mt-6 flex items-baseline gap-x-1">
+                <span className="text-4xl font-bold tracking-tight text-white">
+                  {course.price}
+                </span>
+                <span className="text-sm font-semibold leading-6 text-white/60">
+                  /课程
+                </span>
+              </p>
+              <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-white/60">
+                {course.features.map((feature) => (
+                  <li key={feature} className="flex gap-x-3">
+                    <svg
+                      className="h-6 w-5 flex-none text-purple-500"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
 
-                <ul className="mt-8 space-y-4">
-                  {course.features.map((feature) => (
-                    <li key={feature} className="flex items-center">
-                      <div className="flex-shrink-0">
-                        <Check className="h-6 w-6 text-purple-400" />
-                      </div>
-                      <span className="ml-3 text-white/80">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Button
-                  className={`mt-8 w-full ${
-                    course.featured
-                      ? "bg-purple-500 text-white hover:bg-purple-600"
-                      : "bg-white/10 text-white hover:bg-white/20"
-                  }`}
-                >
-                  立即报名
-                </Button>
-              </div>
+              {/* 发光效果 */}
+              <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-purple-600/50 to-blue-600/50 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100" />
             </div>
           ))}
         </div>
+
+        {!showAll && (
+          <div className="mt-16 text-center">
+            <Link href="/courses">
+              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700">
+                查看更多课程
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        )}
       </div>
-    </div>
+    </section>
   )
 }

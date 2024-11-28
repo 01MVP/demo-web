@@ -2,6 +2,13 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { AnimatedSection } from "@/components/ui/animated-section"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
+import Link from "next/link"
+
+interface MentorsProps {
+  showAll?: boolean
+}
 
 const mentors = [
   {
@@ -30,7 +37,9 @@ const mentors = [
   },
 ]
 
-export function Mentors() {
+export function Mentors({ showAll = false }: MentorsProps) {
+  const displayMentors = showAll ? mentors : mentors.slice(0, 3)
+
   return (
     <div className="relative py-24">
       {/* 背景效果 */}
@@ -50,7 +59,7 @@ export function Mentors() {
         </div>
 
         <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {mentors.map((mentor) => (
+          {displayMentors.map((mentor) => (
             <div
               key={mentor.name}
               className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/10"
@@ -77,6 +86,17 @@ export function Mentors() {
             </div>
           ))}
         </div>
+
+        {!showAll && (
+          <div className="mt-16 text-center">
+            <Link href="/mentors">
+              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700">
+                了解更多导师
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   )
