@@ -1,82 +1,80 @@
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { Download, FileText, Video, Code } from "lucide-react"
-import { AnimatedSection } from "@/components/ui/animated-section"
-import { useToast } from "@/hooks/use-toast"
+import { Download, FileText, Play, Book } from "lucide-react"
 
 const resources = [
   {
     title: "AI 开发入门指南",
-    description: "从零开始的 AI 开发学习路线图",
+    description: "从零开始学习 AI 开发的完整指南",
+    icon: Book,
+    downloads: "1000+",
+  },
+  {
+    title: "MVP 项目实战",
+    description: "手把手教你打造第一个 MVP 产品",
+    icon: Play,
+    downloads: "800+",
+  },
+  {
+    title: "创业资源包",
+    description: "创业必备的工具和资源清单",
     icon: FileText,
-    downloadText: "下载 PDF",
-  },
-  {
-    title: "实战案例视频",
-    description: "3个真实项目的开发全过程",
-    icon: Video,
-    downloadText: "观看视频",
-  },
-  {
-    title: "代码模板合集",
-    description: "常用功能的代码模板和示例",
-    icon: Code,
-    downloadText: "获取代码",
+    downloads: "500+",
   },
 ]
 
 export function Resources() {
-  const { toast } = useToast()
-
-  const handleDownload = () => {
-    toast({
-      title: "订阅成功",
-      description: "资源下载链接已发送到您的邮箱",
-    })
-  }
-
   return (
-    <section className="container py-24 bg-muted/30">
-      <AnimatedSection>
+    <div className="relative py-24">
+      {/* 背景效果 */}
+      <div className="absolute inset-0 bg-grid opacity-10" />
+      <div className="absolute -top-40 right-0 h-[40rem] w-[40rem] rounded-full bg-purple-600/30 blur-[128px] opacity-20" />
+      <div className="absolute -bottom-40 left-0 h-[40rem] w-[40rem] rounded-full bg-blue-600/30 blur-[128px] opacity-20" />
+
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl font-bold">免费学习资源</h2>
-          <p className="mt-4 text-muted-foreground">
-            订阅我们的更新，获取精选的学习资源
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            免费学习资源
+          </h2>
+          <p className="mt-4 text-lg leading-8 text-white/60">
+            精心准备的学习资料，助你快速入门
           </p>
         </div>
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {resources.map((resource) => (
-            <Card key={resource.title} className="bg-background">
-              <CardHeader>
-                <div className="flex items-center gap-4">
-                  <resource.icon className="h-8 w-8 text-primary" />
-                  <div>
-                    <h3 className="font-semibold">{resource.title}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      {resource.description}
-                    </p>
-                  </div>
+            <div
+              key={resource.title}
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/10"
+            >
+              <div className="relative z-10">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-purple-600/20 to-blue-600/20 backdrop-blur-xl">
+                  <resource.icon className="h-6 w-6 text-white" />
                 </div>
-              </CardHeader>
-              <CardContent className="flex justify-center">
-                <Button
-                  variant="outline"
-                  className="gap-2"
-                  onClick={handleDownload}
-                >
-                  <Download className="h-4 w-4" />
-                  {resource.downloadText}
-                </Button>
-              </CardContent>
-            </Card>
+                <h3 className="mt-4 text-lg font-semibold text-white">
+                  {resource.title}
+                </h3>
+                <p className="mt-2 text-white/60">{resource.description}</p>
+                <div className="mt-4 flex items-center justify-between">
+                  <span className="text-sm text-purple-400">
+                    已下载 {resource.downloads}
+                  </span>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="text-white hover:bg-white/10"
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    下载
+                  </Button>
+                </div>
+              </div>
+
+              {/* 悬停时显示的装饰性边框 */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-600/20 to-blue-600/20 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100" />
+            </div>
           ))}
         </div>
-        <div className="mt-16 text-center">
-          <p className="text-muted-foreground">
-            更多资源请关注我们的公众号和知识星球
-          </p>
-        </div>
-      </AnimatedSection>
-    </section>
+      </div>
+    </div>
   )
 }
