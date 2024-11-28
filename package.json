@@ -1,5 +1,5 @@
 {
-  "name": "next-shadcn-template",
+  "name": "01mvp-demo-web",
   "version": "0.0.2",
   "private": true,
   "scripts": {
@@ -52,7 +52,7 @@
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.5.1",
     "eslint-plugin-next-on-pages": "^1.13.5",
-    "framer-motion": "^11.12.0",
+    "framer-motion": "^10.16.4",
     "input-otp": "^1.4.1",
     "lucide-react": "^0.460.0",
     "next": "^15.0.3",

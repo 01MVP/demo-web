@@ -27,7 +27,7 @@ A modern, feature-rich Next.js template with Shadcn UI components. It's particul
 
 ```bash
 # Clone the repository
-git clone https://github.com/jackiexiao/next-shadcn-template.git
+git clone https://github.com/jackiexiao/01mvp-demo-web.git
 
 # Install dependencies
 npm install

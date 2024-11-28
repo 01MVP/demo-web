@@ -23,7 +23,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/jackiexiao/next-shadcn-template.git
+git clone https://github.com/jackiexiao/01mvp-demo-web.git
 
 # 安装依赖
 npm install
