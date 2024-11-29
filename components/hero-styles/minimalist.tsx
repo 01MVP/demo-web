@@ -31,7 +31,7 @@ export function MinimalistHero() {
           <div className="relative h-[500px] hidden lg:block">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl" />
             <Image
-              src="/01mvp-black.png"
+              src="/01mvp-logo.png"
               alt="01MVP Logo"
               fill
               className="object-contain p-8"

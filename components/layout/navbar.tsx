@@ -1,6 +1,7 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Menu } from "lucide-react"
+import { MobileNav } from "./mobile-nav"
 
 const navigation = [
   { name: "首页", href: "/" },
@@ -17,8 +18,17 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <Link href="/" className="flex items-center gap-2">
+              <div className="relative w-8 h-8">
+                <Image
+                  src="/01mvp-logo.png"
+                  alt="01MVP Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                 01MVP
               </span>
             </Link>
@@ -47,11 +57,9 @@ export function Navbar() {
             </Button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex md:hidden">
-            <Button variant="ghost" size="icon" className="text-white/70">
-              <Menu className="h-6 w-6" />
-            </Button>
+          {/* Mobile Navigation */}
+          <div className="flex md:hidden -mr-2">
+            <MobileNav />
           </div>
         </div>
       </div>

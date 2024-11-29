@@ -24,7 +24,7 @@ export default function Home() {
   const { toast } = useToast()
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <Hero />
       <Features />
       <Stats />
@@ -34,10 +34,11 @@ export default function Home() {
       <Resources />
       <FAQ />
       <Newsletter />
-      <ContactForm />
+      {/* <ContactForm /> */}
       <CTA />
       <Social />
       <ScrollToTop />
+      <Toaster />
     </main>
   )
 }
