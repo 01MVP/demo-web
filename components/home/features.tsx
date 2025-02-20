@@ -17,8 +17,8 @@ const features = [
     icon: Rocket,
   },
   {
-    name: "创业社区",
-    description: "连接优秀创业者，分享经验，共同成长",
+    name: "创造者社区",
+    description: "连接优秀创造者，分享经验，共同成长",
     icon: Users,
   },
 ]
@@ -49,7 +49,7 @@ export function Features() {
                 className="relative rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/10"
               >
                 <div className="absolute -inset-0.5 hidden rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 blur transition duration-1000 group-hover:opacity-50 group-hover:duration-200" />
-                
+
                 <div className="relative">
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-purple-600/20 to-blue-600/20 backdrop-blur-xl">
                     <feature.icon className="h-6 w-6 text-white" />

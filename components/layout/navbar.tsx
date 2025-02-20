@@ -9,6 +9,7 @@ const navigation = [
   { name: "导师", href: "/mentors" },
   { name: "资源", href: "/resources" },
   { name: "关于", href: "/about" },
+  { name: "飞书文档", href: "https://hackathonweekly.feishu.cn/wiki/space/7473044385272184860?ccm_open_type=lark_wiki_spaceLink&open_tab_from=wiki_home" },
 ]
 
 export function Navbar() {

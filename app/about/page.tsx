@@ -17,7 +17,7 @@ export default function AboutPage() {
               关于 01MVP
             </h1>
             <p className="mt-6 text-lg leading-8 text-white/60">
-              01MVP 是一个专注于帮助创业者和开发者快速构建 MVP 的平台。我们相信，每个人都应该有机会将自己的想法转化为现实。
+              01MVP 是一个专注于帮助创造者和开发者快速构建 MVP 的平台。我们相信，每个人都应该有机会将自己的想法转化为现实。
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:mt-20 lg:max-w-none lg:grid-cols-3">

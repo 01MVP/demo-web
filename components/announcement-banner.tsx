@@ -22,7 +22,7 @@ export function AnnouncementBanner() {
     <div className="fixed top-0 left-0 right-0 z-50 flex items-center gap-x-6 overflow-hidden bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <p className="text-sm leading-6 text-white">
-          <strong className="font-semibold"> 直达 01MVP 飞书知识库：</strong>
+          <strong className="font-semibold"> （网站建设中）直达 01MVP 飞书知识库：</strong>
           <span className="inline-block ml-1">
              打造你的最小可行产品
           </span>

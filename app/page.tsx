@@ -28,9 +28,9 @@ export default function Home() {
       <Hero />
       <Features />
       <Stats />
-      <Courses />
-      <Mentors />
-      <Showcase />
+      {/* <Courses /> */}
+      {/* <Mentors /> */}
+      {/* <Showcase /> */}
       <Resources />
       <FAQ />
       <Newsletter />
