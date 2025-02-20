@@ -8,6 +8,7 @@ import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { ThemeProvider } from '@/components/theme-provider'
+import { AnnouncementBanner } from '@/components/announcement-banner'
 
 export const viewport: Viewport = {
   themeColor: [
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="relative flex min-h-screen flex-col overflow-x-hidden">
+              <AnnouncementBanner />
               <Navbar />
               <div className="flex-1">{children}</div>
               <Footer />

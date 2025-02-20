@@ -78,7 +78,7 @@ export function Footer() {
             <p>© 2024 01MVP. All rights reserved.</p>
             <p>
               <Link href="https://beian.miit.gov.cn" target="_blank" className="hover:text-white">
-                京ICP备20240101号-1
+                琼ICP备2024040807号-4
               </Link>
             </p>
           </div>
